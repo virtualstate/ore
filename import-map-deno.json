@@ -12,6 +12,7 @@
     "@virtualstate/kdl": "https://cdn.skypack.dev/@virtualstate/kdl",
     "@virtualstate/promise": "https://cdn.skypack.dev/@virtualstate/promise",
     "@virtualstate/promise/the-thing": "https://cdn.skypack.dev/@virtualstate/promise/the-thing",
+    "@virtualstate/focus": "https://cdn.skypack.dev/@virtualstate/focus",
     "@virtualstate/app-history": "./src/app-history.ts",
     "@virtualstate/app-history/polyfill": "./src/polyfill.ts",
     "@virtualstate/app-history/event-target/sync": "./src/event-target/sync-event-target.ts",
@@ -83,7 +84,7 @@
     "./src/history": "./src/history.ts",
     "./esnext/util/parse-dom-deno.js": "./esnext/util/parse-dom-deno.ts",
     "./esnext/util/parse-dom.js": "./esnext/util/parse-dom-deno.ts",
-    "@virtualstate/focus": "./esnext/index.js",
+    "@virtualstate/ore": "./esnext/index.js",
     "cheerio": "./scripts/nop/index.js"
   }
 }
