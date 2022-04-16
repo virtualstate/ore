@@ -40,7 +40,7 @@ clear();
 console.log("cleared");
 
 void (
-    <div className="main">
+    <div class="main">
         <h1>Start again</h1>
         <p>Whats up</p>
         <section>
@@ -50,7 +50,7 @@ void (
 )
 
 void (
-    <div className="footer-container">
+    <div class="footer-container">
         <footer>This is the footer</footer>
     </div>
 )
