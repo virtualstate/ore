@@ -1,26 +1,36 @@
 import * as jsx from "@virtualstate/focus";
 import {ok} from "./like";
 
+export const SiblingSet = Symbol.for("Sibling Set");
+
 export interface SiblingsNode {
+    /**
+     * @internal use at your own risk
+     */
+    [SiblingSet]: Set<unknown>;
     h: typeof jsx.h;
     remove(node: unknown): boolean;
     clear(): void;
     children: AsyncIterable<unknown>;
 }
 
+
 export function createSiblings(): SiblingsNode {
-    const siblings = new Set();
+    const siblings = new Set<unknown>();
     const node = jsx.h(Siblings);
+    const api: Record<string | symbol, unknown> = {
+        h,
+        remove,
+        clear,
+        /**
+         * @internal use at your own risk
+         */
+        [SiblingSet]: siblings
+    }
     const proxied = new Proxy(node, {
         get(t, key) {
-            if (key === "h") {
-                return h;
-            }
-            if (key === "remove") {
-                return remove;
-            }
-            if (key === "clear") {
-                return clear;
+            if (api[key]) {
+                return api[key];
             }
             return node[key];
         }

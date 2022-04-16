@@ -1,8 +1,8 @@
-import { createSiblings } from "@virtualstate/ore";
+import {createSiblings, SiblingSet} from "@virtualstate/ore";
 import { toKDLString } from "@virtualstate/kdl";
 
 const node = createSiblings();
-const { h, remove, clear } = node;
+const { h, remove, clear, [SiblingSet]: set } = node;
 
 <h1>Hello</h1>;
 
@@ -41,5 +41,7 @@ console.log("cleared");
 <div class="footer-container">
     <footer>This is the footer</footer>
 </div>
+
+console.log(set);
 
 console.log(await toKDLString(node));
