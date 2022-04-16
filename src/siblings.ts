@@ -1,16 +1,29 @@
 import * as jsx from "@virtualstate/focus";
+import {ok} from "./like";
 
-export function createSiblings() {
-    const siblings: unknown[] = [];
+export interface SiblingsNode {
+    h: typeof jsx.h;
+    remove(node: unknown): boolean;
+    children: AsyncIterable<unknown>;
+}
+
+export function createSiblings(): SiblingsNode {
+    const siblings = new Set();
     const node = jsx.h(Siblings);
-    return new Proxy(node, {
+    const proxied = new Proxy(node, {
         get(t, key) {
             if (key === "h") {
                 return h;
             }
+            if (key === "remove") {
+                return remove;
+            }
             return node[key];
         }
     });
+    ok<SiblingsNode>(proxied);
+    return proxied;
+
     function Siblings() {
         return siblings;
     }
@@ -18,12 +31,12 @@ export function createSiblings() {
         const flatChildren = children.flatMap(value => value);
         const node = jsx.h(source, options, ...flatChildren);
         for (const child of flatChildren) {
-            const index = siblings.indexOf(child);
-            if (index > -1) {
-                siblings.splice(index, 1);
-            }
+            siblings.delete(child);
         }
-        siblings.push(node);
+        siblings.add(node);
         return node;
+    }
+    function remove(node: unknown) {
+        return siblings.delete(node);
     }
 }
