@@ -5,7 +5,7 @@ import {toJSON} from "@virtualstate/focus";
 const node = createSiblings();
 const { h, remove, clear, [SiblingSet]: set } = node;
 
-// void shows that we don't need to read the return value from the expession
+// void shows that we don't need to read the return value from the expression
 
 void (
     <h1>Hello</h1>
