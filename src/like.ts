@@ -1,4 +1,5 @@
-
+// assert based functions
+/* c8 ignore start */
 
 export function isLike<T>(value: unknown, ...and: unknown[]): value is T {
   if (!and.length) return !!value;

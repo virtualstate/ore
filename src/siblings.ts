@@ -4,6 +4,7 @@ import {ok} from "./like";
 export interface SiblingsNode {
     h: typeof jsx.h;
     remove(node: unknown): boolean;
+    clear(): void;
     children: AsyncIterable<unknown>;
 }
 
@@ -17,6 +18,9 @@ export function createSiblings(): SiblingsNode {
             }
             if (key === "remove") {
                 return remove;
+            }
+            if (key === "clear") {
+                return clear;
             }
             return node[key];
         }
@@ -38,5 +42,8 @@ export function createSiblings(): SiblingsNode {
     }
     function remove(node: unknown) {
         return siblings.delete(node);
+    }
+    function clear() {
+        siblings.clear();
     }
 }
