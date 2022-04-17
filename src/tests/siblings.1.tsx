@@ -21,11 +21,11 @@ void (
 
 console.log(await toKDLString(node));
 
-const footer = <footer>Hello</footer>
+const Footer = <footer>Original footer</footer>
 
 console.log(await toKDLString(node));
 
-remove(footer);
+remove(Footer);
 
 console.log("after");
 
@@ -51,7 +51,7 @@ void (
 
 void (
     <div class="footer-container">
-        <footer>This is the footer</footer>
+        <Footer />
     </div>
 )
 

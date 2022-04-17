@@ -1470,10 +1470,10 @@
     uuid "^8.3.2"
     whatwg-url "^9.1.0"
 
-"@virtualstate/focus@^1.0.1-alpha.82":
-  version "1.0.1-alpha.82"
-  resolved "https://registry.npmjs.org/@virtualstate/focus/-/focus-1.0.1-alpha.82.tgz#67e3920a530c537374f88500b7c28fd6fbed2e41"
-  integrity sha512-S/6eJlNY/bWooir+yptXhRrdlMs0p5Ms5UZlVQjEnYEYATSdVDXAxwTo917/x3pN7S4PPECNpDnFaDUS9BpcXw==
+"@virtualstate/focus@^1.0.1-alpha.85":
+  version "1.0.1-alpha.85"
+  resolved "https://registry.npmjs.org/@virtualstate/focus/-/focus-1.0.1-alpha.85.tgz#e91ec57bd7fe8a88cdaed4f8f179589846a3a5f9"
+  integrity sha512-ES0l1lb5wEqadEtrUXQ5DUvUSZz8RoyRg+lDzHgpbnFZTHPkDBPR0ZCwDR18B8sViaemNC6BRg5W7VuWQljcSg==
   dependencies:
     "@virtualstate/promise" "^1.1.2"
     abort-controller "^3.0.0"
