@@ -1,9 +1,11 @@
-import {createSiblings, SiblingSet} from "@virtualstate/ore";
+import {createSiblings, SiblingMap} from "@virtualstate/ore";
 import { toKDLString } from "@virtualstate/kdl";
 import {toJSON} from "@virtualstate/focus";
 
-const node = createSiblings();
-const { h, remove, clear, [SiblingSet]: set } = node;
+const node = createSiblings({
+    referenceProperty: "id"
+});
+const { h, remove, clear, [SiblingMap]: map } = node;
 
 // void shows that we don't need to read the return value from the expression
 // we could use brackets () or {}, semicolons, or expressions to split up jsx blocks
@@ -37,7 +39,7 @@ clear();
 console.log("cleared");
 
 {
-    <div class="main">
+    <div class="main" id="main">
         <h1>Start again</h1>
         <p>Whats up</p>
         <section>
@@ -52,7 +54,7 @@ console.log("cleared");
     </div>
 }
 
-console.log(set);
+console.log(map);
 
 console.log(await toKDLString(node));
 
@@ -64,5 +66,16 @@ export async function change() {
         </div>
     )
     console.log(`Added link ${random}`);
+    console.log(await toKDLString(node));
+}
+
+export async function replace() {
+    const random = Math.random();
+    (
+        <main class="replaced" id="main">
+            <h1>Replaced {random}</h1>
+        </main>
+    )
+    console.log(`Replaced main with ${random}`);
     console.log(await toKDLString(node));
 }
