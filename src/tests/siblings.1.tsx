@@ -6,22 +6,21 @@ const node = createSiblings();
 const { h, remove, clear, [SiblingSet]: set } = node;
 
 // void shows that we don't need to read the return value from the expression
-
+// we could use brackets () or {}, semicolons, or expressions to split up jsx blocks
 void (
     <h1>Hello</h1>
 )
 
 console.log("This is a log!");
 
-void (
-    <main>
-        <p>Whats up</p>
-    </main>
-)
+<main>
+    <p>Whats up</p>
+</main>
 
 console.log(await toKDLString(node));
 
-const Footer = <footer>Original footer</footer>
+// We can re-use this later
+const Footer = <footer class="original">Original footer</footer>
 
 console.log(await toKDLString(node));
 
@@ -29,9 +28,7 @@ remove(Footer);
 
 console.log("after");
 
-void (
-    <footer>Different footer????</footer>
-)
+<footer>Different footer????</footer>
 
 console.log(await toKDLString(node));
 
@@ -39,7 +36,7 @@ console.log(await toKDLString(node));
 clear();
 console.log("cleared");
 
-void (
+{
     <div class="main">
         <h1>Start again</h1>
         <p>Whats up</p>
@@ -47,13 +44,13 @@ void (
             This is in a section
         </section>
     </div>
-)
+}
 
-void (
+{
     <div class="footer-container">
-        <Footer />
+        <Footer/>
     </div>
-)
+}
 
 console.log(set);
 
@@ -61,7 +58,7 @@ console.log(await toKDLString(node));
 
 export async function change() {
     const random = Math.random();
-    void (
+    (
         <div>
             <a href="https://example.com">Added link {random}</a>
         </div>
